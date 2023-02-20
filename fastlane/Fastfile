@@ -43,7 +43,7 @@ platform :android do
 
   desc "Deploy the Android app to GitHub releases"
   lane :deploy_android do
-    build_number = get_build_number
+    build_number = File.read("../version.txt")
     build_android
     github_release(
       api_token: ENV['GITHUB_ACCESS_TOKEN'],
