@@ -34,7 +34,7 @@ jobs:
         ruby-version: '2.7.5'
 
     - name: Run linting and unit tests
-      run: bundle exec fastlane lint_and_test
+      run: fastlane lint_and_test
 
     - name: Build Android app
-      run: bundle exec fastlane build_android
+      run: fastlane build_android
