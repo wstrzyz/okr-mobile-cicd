@@ -13,6 +13,33 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 # Available Actions
 
+### lint
+
+```sh
+[bundle exec] fastlane lint
+```
+
+
+
+### test
+
+```sh
+[bundle exec] fastlane test
+```
+
+
+
+### lint_and_test
+
+```sh
+[bundle exec] fastlane lint_and_test
+```
+
+
+
+----
+
+
 ## Android
 
 ### android build_android

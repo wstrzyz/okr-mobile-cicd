@@ -13,6 +13,22 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
+# Lint lane
+lane :lint do
+  sh "npm run lint"
+end
+
+# Test lane
+lane :test do
+  sh "npm run test"
+end
+
+#Lint and test lane
+lane :lint_and_test do
+  lint
+  test
+end
+
 default_platform(:android)
 
 platform :android do
@@ -22,12 +38,6 @@ platform :android do
       project_dir: "android/",
       task: "assemble",
       build_type: "Release",
-      # properties: {
-      #   "android.injected.signing.store.file" => "./app/my.keystore",
-      #   "android.injected.signing.store.password" => ENV['MY_KEYSTORE_PASSWORD'],
-      #   "android.injected.signing.key.alias" => "myAlias",
-      #   "android.injected.signing.key.password" => ENV['MY_ALIAS_PASSWORD']
-      # }
     )
   end
 
