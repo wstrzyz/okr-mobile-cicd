@@ -19,6 +19,7 @@ platform :android do
   desc "Build the Android app"
   lane :build_android do
     gradle(
+      project_dir: "android/",
       task: "assemble",
       build_type: "Release",
       # properties: {
@@ -49,3 +50,30 @@ platform :android do
     )
   end
 end
+
+# platform :ios do
+#   desc "Build the iOS app"
+#   lane :build_ios do
+#     gym(project_dir: "ios/", scheme: "okrMobileCICD", configuration: "Release", export_method: "ad-hoc")
+#   end
+
+#   desc "Deploy the iOS app to GitHub releases"
+#   lane :deploy_ios do
+#     build_number = get_build_number
+#     build_ios
+#     github_release(
+#       api_token: ENV['GITHUB_ACCESS_TOKEN'],
+#       owner: "wstrzyz",
+#       repo: "wstrzyz/okr-mobile-cicd",
+#       tag_name: "v#{build_number}",
+#       name: "MyApp v#{build_number}",
+#       release_notes: "Release notes for v#{build_number}",
+#       draft: false,
+#       prerelease: false,
+#       assets: [
+#         "build/MyApp.ipa",
+#         "build/MyApp.app.dSYM.zip"
+#       ]
+#     )
+#   end
+# end
