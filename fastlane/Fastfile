@@ -45,16 +45,13 @@ platform :android do
   lane :deploy_android do
     build_number = File.read("../version.txt")
     build_android
-    github_release(
+    set_github_release(
       api_token: ENV['GITHUB_ACCESS_TOKEN'],
-      owner: "wstrzyz",
-      repo: "wstrzyz/okrMobileCICD",
+      repository_name: "wstrzyz/okrMobileCICD",
       tag_name: "v#{build_number}",
       name: "okrCICD v#{build_number}",
-      release_notes: "Release notes for v#{build_number}",
-      draft: false,
-      prerelease: false,
-      assets: [
+      description: "Release notes for v#{build_number}",
+      upload_assets: [
         "app/build/outputs/apk/release/app-release.apk"
       ]
     )
