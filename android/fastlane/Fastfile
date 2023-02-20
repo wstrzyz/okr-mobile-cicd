@@ -1,0 +1,51 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  desc "Build the Android app"
+  lane :build_android do
+    gradle(
+      task: "assemble",
+      build_type: "Release",
+      # properties: {
+      #   "android.injected.signing.store.file" => "./app/my.keystore",
+      #   "android.injected.signing.store.password" => ENV['MY_KEYSTORE_PASSWORD'],
+      #   "android.injected.signing.key.alias" => "myAlias",
+      #   "android.injected.signing.key.password" => ENV['MY_ALIAS_PASSWORD']
+      # }
+    )
+  end
+
+  desc "Deploy the Android app to GitHub releases"
+  lane :deploy_android do
+    build_number = get_build_number
+    build_android
+    github_release(
+      api_token: ENV['GITHUB_ACCESS_TOKEN'],
+      owner: "wstrzyz",
+      repo: "wstrzyz/okrMobileCICD",
+      tag_name: "v#{build_number}",
+      name: "okrCICD v#{build_number}",
+      release_notes: "Release notes for v#{build_number}",
+      draft: false,
+      prerelease: false,
+      assets: [
+        "app/build/outputs/apk/release/app-release.apk"
+      ]
+    )
+  end
+end
