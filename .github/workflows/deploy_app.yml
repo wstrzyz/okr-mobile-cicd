@@ -13,6 +13,8 @@ on:
 jobs:
   deploy-app:
     runs-on: ubuntu-latest
+    env:
+      FASTLANE_ACCESS_TOKEN: ${{ secrets.FASTLANE_ACCESS_TOKEN }}
 
     steps:
       - name: Checkout
@@ -37,6 +39,11 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7.5'
+          
+      - name: Run Fastlane
+        uses: fastlane/fastlane@v3.22.1
+        with:
+          command: deploy_android
 
-      - name: Deploy Android
-        run: fastlane deploy_android
+     # - name: Deploy Android
+      #  run: fastlane deploy_android
