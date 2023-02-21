@@ -46,13 +46,13 @@ platform :android do
     build_number = File.read("../version.txt")
     build_android
     set_github_release(
-      api_token: ENV['FASTLANE_ACCESS_TOKEN'],
+      api_token: ${{ secrets.FASTLANE_ACCESS_TOKEN }},
       repository_name: "wstrzyz/okr-mobile-cicd",
       tag_name: "v#{build_number}",
       name: "okrCICD v#{build_number}",
       description: "Release notes for v#{build_number}",
       upload_assets: [
-        "app/build/outputs/apk/release/app-release.apk"
+        "/home/runner/work/okr-mobile-cicd/okr-mobile-cicd/android/app/build/outputs/apk/release/app-release.apk"
       ]
     )
   end
