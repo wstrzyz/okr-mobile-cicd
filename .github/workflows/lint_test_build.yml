@@ -2,7 +2,7 @@ name: lint_test_build
 
 on:
   pull_request:
-    branches: [ deploy ] #change to master once ready
+    branches: [ master ]
 
 jobs:
   build:
