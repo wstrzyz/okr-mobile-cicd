@@ -1,14 +1,8 @@
-name: Deploy App
-
-#on:
- # push:
-  #  branches:
-   #   - master
+name: deploy_app
       
 on:
-  pull_request:
+  push:
     branches: [ master ]
-
 
 jobs:
   deploy-app:
