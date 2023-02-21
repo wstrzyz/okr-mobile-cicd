@@ -1,15 +1,3 @@
-# This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
-#
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
-
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
@@ -58,12 +46,12 @@ platform :android do
   end
 end
 
-#
 # platform :ios do
 #   desc "Build the iOS app"
 #   lane :build_ios do
-#     gym(project_dir: "ios/", scheme: "okrMobileCICD", configuration: "Release", export_method: "ad-hoc")
+#     gym(: "ios/", scheme: "okrMobileCICD", configuration: "Release", export_method: "ad-hoc")
 #   end
+# end
 
 #   desc "Deploy the iOS app to GitHub releases"
 #   lane :deploy_ios do
