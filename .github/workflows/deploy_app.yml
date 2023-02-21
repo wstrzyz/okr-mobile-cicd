@@ -1,9 +1,13 @@
 name: Deploy App
 
+#on:
+ # push:
+  #  branches:
+   #   - master
+      
 on:
-  push:
-    branches:
-      - master
+  pull_request:
+    branches: [ master ]
 
 
 jobs:
