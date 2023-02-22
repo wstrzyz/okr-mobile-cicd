@@ -17,6 +17,42 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+// i18n-next setup
+import 'intl-pluralrules';
+import i18n, {ModuleType} from 'i18next';
+import {initReactI18next} from 'react-i18next';
+import {NativeModules, Platform} from 'react-native';
+import enTranslation from './locales/en/translation.json';
+import esTranslation from './locales/es/translation.json';
+
+import {useTranslation} from 'react-i18next';
+
+const languageDetector = {
+  type: 'languageDetector' as ModuleType,
+  detect: () => {
+    const locale =
+      Platform.OS === 'ios'
+        ? NativeModules.SettingsManager.settings.AppleLocale ||
+          NativeModules.SettingsManager.settings.AppleLanguages[0]
+        : NativeModules.I18nManager.localeIdentifier;
+    return locale.substring(0, 2);
+  },
+  init: () => {},
+  cacheUserLanguage: () => {},
+};
+
+i18n
+  .use(languageDetector)
+  .use(initReactI18next)
+  .init({
+    resources: {
+      en: {translation: enTranslation},
+      es: {translation: esTranslation},
+    },
+    fallbackLng: 'en',
+    interpolation: {escapeValue: false},
+  });
+
 export const Section: React.FC<
   PropsWithChildren<{
     title: string;
@@ -49,6 +85,8 @@ export const Section: React.FC<
 };
 
 const App = () => {
+  const {t} = useTranslation();
+
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -79,9 +117,7 @@ const App = () => {
           <Section title="Debug">
             <DebugInstructions />
           </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
+          <Section title={t('title')}>{t('paragraph')}</Section>
           <LearnMoreLinks />
         </View>
       </ScrollView>
