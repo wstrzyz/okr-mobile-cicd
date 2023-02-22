@@ -1474,6 +1474,13 @@
   "resolved" "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.5.tgz"
   "version" "15.7.5"
 
+"@types/react-i18next@^8.1.0":
+  "integrity" "sha512-d4xhcjX5b3roNMObRNMfb1HinHQlQLPo8xlDj60dnHeeAw2bBymR2cy/l1giJpHzo/ZFgSvgVUvIWr4kCrenCg=="
+  "resolved" "https://registry.npmjs.org/@types/react-i18next/-/react-i18next-8.1.0.tgz"
+  "version" "8.1.0"
+  dependencies:
+    "react-i18next" "*"
+
 "@types/react-native@^0.70.6":
   "integrity" "sha512-FobPtzoNPNHugBKMfzs4Li0Q9ei4tgU8SI1M5Ayg7+t5/+noCm2sknI8uwij22wMkcHcefv8RFx4q28nNVJtCQ=="
   "resolved" "https://registry.npmjs.org/@types/react-native/-/react-native-0.70.11.tgz"
@@ -3892,6 +3899,11 @@
     "has" "^1.0.3"
     "side-channel" "^1.0.4"
 
+"intl-pluralrules@^1.3.1":
+  "integrity" "sha512-sNYPls1Q4fyN0EGLFVJ7TIuaMWln01LupLozfIBt69rHK0DHehghMSz6ejfnSklgRddnyQSEaQPIU6d9TCKH3w=="
+  "resolved" "https://registry.npmjs.org/intl-pluralrules/-/intl-pluralrules-1.3.1.tgz"
+  "version" "1.3.1"
+
 "invariant@^2.2.4":
   "integrity" "sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA=="
   "resolved" "https://registry.npmjs.org/invariant/-/invariant-2.2.4.tgz"
@@ -6052,7 +6064,7 @@
     "shell-quote" "^1.6.1"
     "ws" "^7"
 
-"react-i18next@^12.1.5":
+"react-i18next@*", "react-i18next@^12.1.5":
   "integrity" "sha512-7PQAv6DA0TcStG96fle+8RfTwxVbHVlZZJPoEszwUNvDuWpGldJmNWa3ZPesEsZQZGF6GkzwvEh6p57qpFD2gQ=="
   "resolved" "https://registry.npmjs.org/react-i18next/-/react-i18next-12.1.5.tgz"
   "version" "12.1.5"
