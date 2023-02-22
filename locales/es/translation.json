@@ -1,4 +1,5 @@
 {
   "title": "Hola",
-  "paragraph": "hola, esta oración está en español"
+  "paragraph": "hola, esta oración está en español",
+  "greeting": "Hola, hoy es {{date, date}}"
 }

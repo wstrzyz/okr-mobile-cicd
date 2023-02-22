@@ -1,4 +1,5 @@
 {
   "title": "Hello",
-  "paragraph": "This sentence is in english"
+  "paragraph": "This sentence is in english",
+  "greeting": "Hello, today is {{date, date}}"
 }

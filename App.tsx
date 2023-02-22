@@ -24,8 +24,10 @@ import {initReactI18next} from 'react-i18next';
 import {NativeModules, Platform} from 'react-native';
 import enTranslation from './locales/en/translation.json';
 import esTranslation from './locales/es/translation.json';
-
 import {useTranslation} from 'react-i18next';
+
+//date formatter
+import {formatDate} from './locales/utils';
 
 const languageDetector = {
   type: 'languageDetector' as ModuleType,
@@ -50,7 +52,15 @@ i18n
       es: {translation: esTranslation},
     },
     fallbackLng: 'en',
-    interpolation: {escapeValue: false},
+    interpolation: {
+      escapeValue: false,
+      format: function (value, format, lng) {
+        if (value instanceof Date) {
+          return formatDate(value, lng);
+        }
+        return value;
+      },
+    },
   });
 
 export const Section: React.FC<
@@ -93,6 +103,9 @@ const App = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const date = new Date();
+  const formattedDate = t('greeting', {date});
+
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar
@@ -118,6 +131,7 @@ const App = () => {
             <DebugInstructions />
           </Section>
           <Section title={t('title')}>{t('paragraph')}</Section>
+          <Section title={t('title')}>{formattedDate}</Section>
           <LearnMoreLinks />
         </View>
       </ScrollView>
